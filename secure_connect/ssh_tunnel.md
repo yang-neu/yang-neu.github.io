@@ -7,7 +7,7 @@
 
 ## 解决方案
 我们可以通过一台公网的服务器作为跳板，连接这两台设备。  
-可参考： [如何获得免费(3个月)公网服务器](https://cloud.google.com/free?hl=zh-cn)
+_关于免费公网服务器可参考：—_ [如何获得免费(3个月)公网服务器](https://cloud.google.com/free?hl=zh-cn)
 
 ## 步骤
 1.
