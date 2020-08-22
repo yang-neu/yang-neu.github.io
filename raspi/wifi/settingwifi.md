@@ -41,6 +41,17 @@ network={
 ## 方法二，在树莓派启动后使用raspi-config字符界面
 _这个方法也多用于没有图形界面的情况，如树莓派ZERO_
 
+1. 先这控制台输入 **sudo iwlist wlan0 scan** 扫描可用Wi-Fi接入点，例如：
+>$ sudo iwlist wlan0 scan  
+wlan0     Scan completed :  
+Cell 01 - Address: xxxxxx  
+Channel:2  
+Frequency:2.417 GHz (Channel 2)  
+Quality=30/70  Signal level=-80 dBm    
+Encryption key:on  
+ESSID:"Buffalo-G-9448"   
+...
+
 1. 在控制台输入 **sudo raspi-config**
 1. 用键盘的上下键，如图选择，并用回车键选定  
     ![main menu](mainmenu.png)  
