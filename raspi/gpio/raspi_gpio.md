@@ -1,1 +1,1 @@
-![GitHub Logo](GPIO-Pinout.png)
+![gpio pin _layout](GPIO-Pinout.png)
