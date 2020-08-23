@@ -50,7 +50,7 @@ _以下的**$**符号代表使用一般用户权限运行，**$**本身不需要
 1. 把电脑及设备的公钥都注册到服务器
     _因为即使是SSH加密通道，建立SSH连接密码认证时传输的用户名和密码时明码，很容易被监听，所以强力建议使用密钥认证_
     把下面ssh-rsa AAA...的所有内容添加到公网服务器的~/home/yourid/.ssh/authorized_keys
-    > $ cat ~/.ssh/id_rsa.pub
+    > $ cat ~/.ssh/id_rsa.pub  
     >ssh-rsa AAAAB3NzaC1yc2...BOKlAbilPeVB66Gh yourid@yourdev  
 
 1. 把电脑侧的公钥也注册到设备上，方法同上
