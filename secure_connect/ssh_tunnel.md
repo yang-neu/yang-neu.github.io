@@ -7,7 +7,50 @@
 
 ## 解决方案
 我们可以通过一台公网的服务器作为跳板，连接这两台设备。  
-_关于免费公网服务器可参考：—_ [如何获得免费(3个月)公网服务器](https://cloud.google.com/free?hl=zh-cn)
+_关于免费公网服务器可参考： [如何获得免费(3个月)公网服务器](https://cloud.google.com/free?hl=zh-cn)_
+
+## 系统的构成例
+_我以这个构成为例进行说明_
+
+<pre><code>
+　          家   |    公网(Internet)                ｜　 公司
+＋ーーー＋        |            ＋ーーーー+            ｜       +-----＋
+｜     ｜        |===SSH通道===|       |===SSH通道===| 　　　 ｜     |
+｜ 设备 |--------＋------------| 服务器 |------------｜-------| 电脑 |
+｜     ｜        |============｜　　　　|============｜       |     ｜
+＋ーーー＋        |            ＋ーーーー+            ｜       +-----＋
+</code></pre>
 
 ## 步骤
-1.
+_以下的**$**符号代表使用一般用户权限运行，**$**本身不需要输入_
+1. 分别在电脑和设备上生成SSH密钥  
+<pre><code>
+    $ ssh-keygen
+      Generating public/private rsa key pair.
+      Enter file in which to save the key (/home/yourid/.ssh/id_rsa):
+      Enter passphrase (empty for no passphrase):
+      Enter same passphrase again:
+      Your identification has been saved in /home/yourid/.ssh/id_rsa.
+      Your public key has been saved in /home/yourid/.ssh/id_rsa.pub.
+      The key fingerprint is:
+      SHA256:ZPlADYms58C/isWxr4wE01QLEnUZ9/BvqboneBFi9xg yourid@yourdev
+      The key's randomart image is:
+      +---[RSA 2048]----+
+      |ooo ++o.o+       |
+      | . +.oo=...      |
+      |  ....  B        |
+      | o  * Eo + .     |
+      |o ...B =S =      |
+      | o . o= .o       |
+      |  . +. o.        |
+      | . =..+..        |
+      |  o ++++         |
+      +----[SHA256]-----+
+</code></pre>
+1. 把公钥注册到服务器
+    _因为即使是SSH加密通道，建立SSH连接密码认证时传输的用户名和密码时明码，很容易被监听，所以强力建议使用密钥认证_
+    把下面ssh-rsa AAA...的所有内容添加到公网服务器的~/home/yourid/.ssh/authorized_keys
+    > $ cat ~/.ssh/id_rsa.pub
+    >ssh-rsa AAAAB3NzaC1yc2...BOKlAbilPeVB66Gh yourid@yourdev
+
+1. 建立设备到SSH通道
